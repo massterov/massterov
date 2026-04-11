@@ -75,7 +75,15 @@ body.loaded {
 
 .hero {
   text-align: center;
-  padding-top: 50px;
+  padding-top: 350px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+body.loaded .hero {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .btn {
@@ -150,6 +158,12 @@ body.loaded {
   opacity: 0.9;
 }
 
+.theme-toggle,
+.lang-toggle {
+  z-index: 10000;
+  pointer-events: auto;
+}
+
 /* === НАВИГАЦИЯ === */
 .side-nav {
   position: fixed;
@@ -179,8 +193,9 @@ body.loaded {
 /* === АНИМАЦИЯ === */
 .fade {
   opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 1s ease, transform 1s ease;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: opacity, transform;
 }
 
 .fade.show {
@@ -188,21 +203,34 @@ body.loaded {
   transform: translateY(0);
 }
 
-/* === ПОРТФОЛИО === */
+/* ОБЩАЯ СТРОКА */
 .portfolio-row {
   display: flex;
   gap: 20px;
   overflow-x: auto;
-  align-items: center; /* центр по вертикали */
+  align-items: center;
 }
 
-.portfolio-row video {
-  width: 320px !important;   /* жестко фиксируем ширину */
-  height: 180px !important;  /* фиксируем высоту */
-  flex: 0 0 auto;            /* запрещаем растягивание */
-  object-fit: cover;         /* сохраняет пропорции красиво */
-  display: block;            /* убирает inline поведение */
+/* =========================
+   🔲 ГОРИЗОНТАЛЬНЫЕ 16:9
+========================= */
+.portfolio-row.horizontal iframe {
+  width: 420px;
+  height: 236px; /* 16:9 */
+  flex: 0 0 auto;
   border-radius: 12px;
+  object-fit: cover;
+}
+
+/* =========================
+   📱 ВЕРТИКАЛЬНЫЕ 9:16
+========================= */
+.portfolio-row.vertical iframe {
+  width: 240px;
+  height: 426px; /* 9:16 */
+  flex: 0 0 auto;
+  border-radius: 12px;
+  object-fit: cover;
 }
 
 /* === СКРОЛЛБАР === */
@@ -346,29 +374,58 @@ h1, h2, h3 {
 <div class="side-nav">
   <div class="nav-dot" onclick="scrollToSection('hero')"></div>
   <div class="nav-dot" onclick="scrollToSection('portfolio')"></div>
+  <div class="nav-dot" onclick="scrollToSection('portfolio2')"></div>
   <div class="nav-dot" onclick="scrollToSection('faq')"></div>
   <div class="nav-dot" onclick="scrollToSection('contact')"></div>
 </div>
 
 <!-- HERO -->
-<section id="hero" class="hero fade">
+<section id="hero" class="hero">
   <h1 data-ru="MASSTEROV" data-en="MASSTEROV"></h1>
   <p data-ru="Твой партнер в мире монтажа и анимации видео" data-en="Your partner in the world of video editing and animation
 "></p>
  </section>
 
-<!-- PORTFOLIO -->
- <section id="portfolio" class="fade">
+<section id="portfolio" class="fade">
   <div class="card">
+    <h2 data-ru="Вертикальные ролики" data-en="Portfolio">Vertical</h2>
+    <!-- ВЕРТИКАЛЬНЫЕ 9:16 -->
+    <div class="portfolio-row vertical">
 
-    <h2 data-ru="Портфолио" data-en="Portfolio">Портфолио</h2>
+      <iframe src="https://player.vimeo.com/video/1182257632"
+        loading="lazy"
+        frameborder="0"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen></iframe>
 
-    <div class="portfolio-row">
-      <video src="video1.mp4" controls></video>
-      <video src="video2.mp4" controls></video>
-      <video src="video3.mp4" controls></video>
+      <iframe src="https://player.vimeo.com/video/1182266956"
+        loading="lazy"
+        frameborder="0"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen></iframe>
     </div>
+  </div>
+</section>
 
+<section id="portfolio2" class="fade">
+  <div class="card">
+    <h2 data-ru="Горизонтальные ролики" data-en="Portfolio">Horizontal</h2>
+  <!-- ГОРИЗОНТАЛЬНЫЕ 16:9 -->
+    <div class="portfolio-row horizontal">
+
+      <iframe src="https://player.vimeo.com/video/VIDEO_ID_3"
+        loading="lazy"
+        frameborder="0"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen></iframe>
+
+      <iframe src="https://player.vimeo.com/video/VIDEO_ID_4"
+        loading="lazy"
+        frameborder="0"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen></iframe>
+
+    </div>
   </div>
 </section>
 
@@ -441,7 +498,7 @@ discounts for bulk orders are available.">
   </div>
 </section>
 
-<section id="footer" class="fade footer">
+<section id="footer" class="footer">
   <p data-ru="© 2026 MASSTEROV" data-en="© 2026 MASSTEROV">© 2026 MASSTEROV</p>
 </section>
 
@@ -467,15 +524,30 @@ document.querySelectorAll('.faq-question').forEach(q => {
 /* FADE ANIMATION */
 const elements = document.querySelectorAll('.fade');
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('show');
+function updateVisibility() {
+  const height = window.innerHeight;
+
+  const topZone = height * 0.25;
+  const bottomZone = height * 0.75;
+
+  elements.forEach(el => {
+    const rect = el.getBoundingClientRect();
+
+    const isVisible =
+      rect.top < bottomZone &&
+      rect.bottom > topZone;
+
+    if (isVisible) {
+      el.classList.add('show');
+    } else {
+      el.classList.remove('show');
     }
   });
-});
+}
 
-elements.forEach(el => observer.observe(el));
+window.addEventListener('scroll', updateVisibility);
+window.addEventListener('load', updateVisibility);
+window.addEventListener('resize', updateVisibility);
 
 /* LANGUAGE SWITCH */
 let currentLang = "ru";
