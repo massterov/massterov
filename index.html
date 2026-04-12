@@ -136,32 +136,6 @@ body.loaded .hero {
   opacity: 0.9;
 }
 
-/* === НАВИГАЦИЯ === */
-.side-nav {
-  position: fixed;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.nav-dot {
-  width: 12px;
-  height: 12px;
-  background: var(--text);
-  opacity: 0.4;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.nav-dot:hover {
-  opacity: 1;
-  transform: scale(1.3);
-}
-
 /* === АНИМАЦИЯ === */
 .fade {
   opacity: 0;
@@ -398,14 +372,6 @@ h1, h2, h3 {
 
 <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
 <button class="lang-toggle" onclick="toggleLang()">🌐</button>
-
-<div class="side-nav">
-  <div class="nav-dot" onclick="scrollToSection('hero')"></div>
-  <div class="nav-dot" onclick="scrollToSection('portfolio')"></div>
-  <div class="nav-dot" onclick="scrollToSection('portfolio2')"></div>
-  <div class="nav-dot" onclick="scrollToSection('faq')"></div>
-  <div class="nav-dot" onclick="scrollToSection('contact')"></div>
-</div>
 
 <!-- HERO - исправленный заголовок с видимой обводкой -->
 <section id="hero" class="hero">
