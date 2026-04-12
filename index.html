@@ -3,9 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Portfolio</title>
-
+<title>Portfolio | MASSTEROV</title>
 <style>
 
 @font-face {
@@ -32,7 +30,6 @@ section {
   margin: auto;
 }
 
-/* убираем линию у первого блока */
 section:first-of-type {
   border-top: none;
 }
@@ -50,6 +47,7 @@ section:first-of-type {
   --text: #e3e5e8;
   --accent: #5865f2;
   --card: #2b2d31;
+  --stroke-color: #ffffff; /* цвет обводки для темной темы */
 }
 
 .light-theme {
@@ -57,6 +55,7 @@ section:first-of-type {
   --text: #111;
   --accent: #5865f2;
   --card: #ffffff;
+  --stroke-color: #000000; /* цвет обводки для светлой темы - черный */
 }
 
 /* === ОСНОВА === */
@@ -66,7 +65,7 @@ body {
   background: var(--bg);
   color: var(--text);
   transition: opacity 1.5s ease, background 0.4s ease, color 0.4s ease;
-  opacity: 0; /* старт прозрачный */
+  opacity: 0;
 }
 
 body.loaded {
@@ -86,42 +85,25 @@ body.loaded .hero {
   transform: translateY(0);
 }
 
-.btn {
-  padding: 12px 24px;
-  background: var(--accent);
-  color: white;
-  border-radius: 8px;
-  text-decoration: none;
-}
-
 /* === КНОПКИ === */
 .theme-toggle {
   position: fixed;
   top: 20px;
   right: 20px;
-
   width: 39px;
   height: 39px;
-
   background: var(--card);
   color: var(--text);
-
   border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 50%; /* оставляем сферу */
-
+  border-radius: 50%;
   cursor: pointer;
   font-size: 13px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   transition: all 0.3s ease;
-}
-
-.theme-toggle:hover {
-  transform: scale(1.08);
-  opacity: 0.9;
+  z-index: 10000;
+  pointer-events: auto;
 }
 
 .theme-toggle:hover {
@@ -133,35 +115,25 @@ body.loaded .hero {
   position: fixed;
   top: 20px;
   right: 70px;
-
   width: 39px;
   height: 39px;
-
   background: var(--card);
   color: var(--text);
-
   border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 50%; /* оставляем сферу */
-
+  border-radius: 50%;
   cursor: pointer;
   font-size: 13px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   transition: all 0.3s ease;
+  z-index: 10000;
+  pointer-events: auto;
 }
 
 .lang-toggle:hover {
   transform: scale(1.05);
   opacity: 0.9;
-}
-
-.theme-toggle,
-.lang-toggle {
-  z-index: 10000;
-  pointer-events: auto;
 }
 
 /* === НАВИГАЦИЯ === */
@@ -203,7 +175,7 @@ body.loaded .hero {
   transform: translateY(0);
 }
 
-/* ОБЩАЯ СТРОКА */
+/* ПОРТФОЛИО СТРОКИ */
 .portfolio-row {
   display: flex;
   gap: 20px;
@@ -211,29 +183,22 @@ body.loaded .hero {
   align-items: center;
 }
 
-/* =========================
-   🔲 ГОРИЗОНТАЛЬНЫЕ 16:9
-========================= */
 .portfolio-row.horizontal iframe {
   width: 420px;
-  height: 236px; /* 16:9 */
+  height: 236px;
   flex: 0 0 auto;
   border-radius: 12px;
   object-fit: cover;
 }
 
-/* =========================
-   📱 ВЕРТИКАЛЬНЫЕ 9:16
-========================= */
 .portfolio-row.vertical iframe {
   width: 240px;
-  height: 426px; /* 9:16 */
+  height: 426px;
   flex: 0 0 auto;
   border-radius: 12px;
   object-fit: cover;
 }
 
-/* === СКРОЛЛБАР === */
 .portfolio-row::-webkit-scrollbar {
   height: 8px;
 }
@@ -245,12 +210,12 @@ body.loaded .hero {
 
 /* === КАРТОЧКИ === */
 .card {
-  background: var(--card);           /* фон карточки */
-  border: 1px solid rgba(255,255,255,0.08); /* тонкая обводка */
-  border-radius: 16px;               /* скругление */
-  padding: 30px;                     /* внутренние отступы */
-  margin-bottom: 40px;               /* расстояние между блоками */
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* лёгкая тень */
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 30px;
+  margin-bottom: 40px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   transition: all 0.3s ease;
 }
 
@@ -282,7 +247,6 @@ body.loaded .hero {
   transform: rotate(45deg);
 }
 
-/* === ОТВЕТ С ПЛАВНОЙ АНИМАЦИЕЙ === */
 .faq-answer {
   max-height: 0;
   overflow: hidden;
@@ -304,73 +268,134 @@ body.loaded .hero {
   .side-nav {
     right: 10px;
   }
-
-  .portfolio video {
-    height: 180px;
+  .portfolio-row.horizontal iframe {
+    width: 280px;
+    height: 158px;
+  }
+  .portfolio-row.vertical iframe {
+    width: 180px;
+    height: 320px;
+  }
+  .faq-question {
+    font-size: 24px;
+  }
+  .faq-answer {
+    font-size: 18px;
   }
 }
 
 :root {
-  --font-heading: 'BarlowCondensed', sans;      /* заголовки */
-  --font-body: 'Comfortaa', sans-serif; /* текст */
-  --font-brand: 'PlayfairDisplay', serif;    /* ник (по желанию) */
+  --font-heading: 'BarlowCondensed', sans-serif;
+  --font-body: 'Comfortaa', sans-serif;
+  --font-brand: 'PlayfairDisplay', serif;
 }
 
 body {
-  font-family: var(--font-body); /* весь обычный текст */
+  font-family: var(--font-body);
   font-size: 24px;
 }
 
 h1, h2, h3 {
-  font-family: var(--font-heading); /* все заголовки */
+  font-family: var(--font-heading);
   font-size: 48px;
   text-align: center;
-  margin-top: 0;        /* убирает верхний отступ */
-  margin-bottom: 20px;  /* расстояние до контента ниже */
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+/* СТИЛЬ ДЛЯ ЧАСТИ СЛОВА С ОБВОДКОЙ - ТЕПЕРЬ ВИДИМО */
+.stroke-text {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--stroke-color);
+  text-stroke: 1px var(--stroke-color);
+  /* Добавляем небольшую тень для лучшей читаемости */
+  letter-spacing: normal;
+  display: inline-block;
+}
+
+/* Ховер эффект для заголовка */
+.hero h1:hover .stroke-text {
+  -webkit-text-stroke-width: 2.5px;
+  transition: all 0.2s ease;
 }
 
 .hero h1 {
-  font-size: 90px;
+  font-size: 200px;
   letter-spacing: 2px;
+  display: inline-block;
+  margin: 0 auto;
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+.hero p {
+  font-size: 60px;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.normal-part {
+  color: var(--text);
+}
+
+.hero-title-wrapper {
+  display: inline-block;
+  white-space: nowrap;
 }
 
 .footer {
-  text-align: center;      /* центр текста */
-  font-size: 15px;          /* меньше основного текста */
-  opacity: 0.5;             /* приглушённый вид */
-  padding: 0px;            /* компактность */
-  margin-bottom: 20px;      /* отступ снизу страницы */
+  text-align: center;
+  font-size: 15px;
+  opacity: 0.5;
+  padding: 20px 0 40px;
+  margin-bottom: 0;
 }
 
 .social-icons {
-  display: flex;          /* иконки в ряд */
-  gap: 50px;              /* расстояние между ними */
-  justify-content: center;/* центрирование */
+  display: flex;
+  gap: 50px;
+  justify-content: center;
   margin-top: 20px;
 }
 
 .icon img {
-  width: 40px;            /* размер иконки */
+  width: 40px;
   height: 40px;
   transition: transform 0.3s ease, opacity 0.3s ease;
   cursor: pointer;
 }
 
 .icon img:hover {
-  transform: scale(1.2);  /* эффект увеличения */
+  transform: scale(1.2);
   opacity: 0.8;
 }
 
+@media (max-width: 650px) {
+  .hero h1 {
+    font-size: 60px;
+  }
+  body {
+    font-size: 18px;
+  }
+  .faq-question {
+    font-size: 22px;
+  }
+  .faq-answer {
+    font-size: 16px;
+  }
+}
 </style>
 </head>
-
 <body>
 
-<!-- КНОПКИ -->
 <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
 <button class="lang-toggle" onclick="toggleLang()">🌐</button>
 
-<!-- НАВИГАЦИЯ -->
 <div class="side-nav">
   <div class="nav-dot" onclick="scrollToSection('hero')"></div>
   <div class="nav-dot" onclick="scrollToSection('portfolio')"></div>
@@ -379,25 +404,25 @@ h1, h2, h3 {
   <div class="nav-dot" onclick="scrollToSection('contact')"></div>
 </div>
 
-<!-- HERO -->
+<!-- HERO - исправленный заголовок с видимой обводкой -->
 <section id="hero" class="hero">
-  <h1 data-ru="MASSTEROV" data-en="MASSTEROV"></h1>
-  <p data-ru="Твой партнер в мире монтажа и анимации видео" data-en="Your partner in the world of video editing and animation
-"></p>
- </section>
+  <h1>
+    <span class="hero-title-wrapper">
+      <span class="stroke-text" data-ru-stroke="MASS" data-en-stroke="MASS">MASS</span><span class="normal-part" data-ru-normal="TEROV" data-en-normal="TEROV">TEROV</span>
+    </span>
+  </h1>
+  <p data-ru="Я сделаю твой контент продаваемым" data-en="I will make your content sellable"></p>
+</section>
 
 <section id="portfolio" class="fade">
   <div class="card">
-    <h2 data-ru="Вертикальные ролики" data-en="Portfolio">Vertical</h2>
-    <!-- ВЕРТИКАЛЬНЫЕ 9:16 -->
+    <h2 data-ru="Вертикальные ролики" data-en="Vertical">Vertical</h2>
     <div class="portfolio-row vertical">
-
       <iframe src="https://player.vimeo.com/video/1182257632"
         loading="lazy"
         frameborder="0"
         allow="autoplay; fullscreen; picture-in-picture"
         allowfullscreen></iframe>
-
       <iframe src="https://player.vimeo.com/video/1182266956"
         loading="lazy"
         frameborder="0"
@@ -409,22 +434,18 @@ h1, h2, h3 {
 
 <section id="portfolio2" class="fade">
   <div class="card">
-    <h2 data-ru="Горизонтальные ролики" data-en="Portfolio">Horizontal</h2>
-  <!-- ГОРИЗОНТАЛЬНЫЕ 16:9 -->
+    <h2 data-ru="Горизонтальные ролики" data-en="Horizontal">Horizontal</h2>
     <div class="portfolio-row horizontal">
-
-      <iframe src="https://player.vimeo.com/video/VIDEO_ID_3"
+      <iframe src="https://player.vimeo.com/video/1182257633"
         loading="lazy"
         frameborder="0"
         allow="autoplay; fullscreen; picture-in-picture"
         allowfullscreen></iframe>
-
-      <iframe src="https://player.vimeo.com/video/VIDEO_ID_4"
+      <iframe src="https://player.vimeo.com/video/1182266957"
         loading="lazy"
         frameborder="0"
         allow="autoplay; fullscreen; picture-in-picture"
         allowfullscreen></iframe>
-
     </div>
   </div>
 </section>
@@ -433,21 +454,17 @@ h1, h2, h3 {
 <section id="faq" class="fade">
   <div class="card">
     <h2 data-ru="FAQ" data-en="FAQ">FAQ</h2>
-
     <div class="faq">
-
       <div class="faq-item">
         <div class="faq-question" data-ru="Обо мне" data-en="About me">
-          Сроки выполнения?
+          Кто я?
         </div>
         <div class="faq-answer" data-ru="<br>Меня зовут Захар, и я занимаюсь созданием моушн-анимации и видеомонтажом. При сотрудничестве я могу гарантировать четкое соблюдение дедлайнов, 
     соответствие вашим идеям и ожиданиям, а также работу с правками до тех пор, пока вы не будете полностью довольны результатом." 
-          data-en="<br>
-My name is Zakhar, and I specialize in motion animation and video editing. When working with me, I guarantee strict adherence to deadlines, 
+          data-en="<br>My name is Zakhar, and I specialize in motion animation and video editing. When working with me, I guarantee strict adherence to deadlines, 
 accommodating your ideas and expectations, and working with you on revisions until you're completely satisfied with the result."> 
         </div>
       </div>
-
       <div class="faq-item">
         <div class="faq-question" data-ru="Сроки выполнения" data-en="Delivery time">
           Сроки выполнения?
@@ -458,9 +475,8 @@ accommodating your ideas and expectations, and working with you on revisions unt
 Popular vertical videos about a minute long take 1 to 3 days, while more complex projects can take up to a week, depending on the length of the project."> 
         </div>
       </div>
-
       <div class="faq-item">
-        <div class="faq-question" data-ru="Стомость услуг" data-en="Pricing">
+        <div class="faq-question" data-ru="Стоимость услуг" data-en="Pricing">
           Цена услуг?
         </div>
         <div class="faq-answer" data-ru="<br>Стоимость коротких вертикальных роликов начинается от 1500 рублей за видеоролик.<br><br>
@@ -472,7 +488,6 @@ It's worth keeping in mind that the final cost of a single video depends on the 
 discounts for bulk orders are available.">
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -480,21 +495,18 @@ discounts for bulk orders are available.">
 <!-- CONTACT -->
 <section id="contact" class="fade">
   <div class="card">
-<h2 data-ru="Контакты" data-en="Contacts">Контакты</h2>
-  <div class="social-icons">
-
-  <a href="https://t.me/yourname" target="_blank" class="icon">
-    <img src="icons/telegram.png" alt="Telegram">
-  </a>
-
-  <a href="mailto:your@email.com" class="icon">
-    <img src="icons/mail.png" alt="Email">
-  </a>
-
-  <a href="https://instagram.com/yourname" target="_blank" class="icon">
-    <img src="icons/instagram.png" alt="Instagram">
-  </a>
-  </div>
+    <h2 data-ru="Контакты" data-en="Contacts">Контакты</h2>
+    <div class="social-icons">
+      <a href="https://t.me/massterov" target="_blank" class="icon">
+        <img src="icons/telegram.png" alt="Telegram" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2111/2111646.png'">
+      </a>
+      <a href="mailto:zakharmasterov@yandex.ru" class="icon">
+        <img src="icons/mail.png" alt="Email" onerror="this.src='https://cdn-icons-png.flaticon.com/512/732/732200.png'">
+      </a>
+      <a href="https://instagram.com/masssterov" target="_blank" class="icon">
+        <img src="icons/instagram.png" alt="Instagram" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2111/2111463.png'">
+      </a>
+    </div>
   </div>
 </section>
 
@@ -503,40 +515,30 @@ discounts for bulk orders are available.">
 </section>
 
 <script>
-
-/* SCROLL */
 function scrollToSection(id) {
   document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
 }
 
-/* THEME */
 function toggleTheme() {
   document.body.classList.toggle('light-theme');
 }
 
-/* FAQ */
 document.querySelectorAll('.faq-question').forEach(q => {
   q.addEventListener('click', () => {
     q.parentElement.classList.toggle('active');
   });
 });
 
-/* FADE ANIMATION */
 const elements = document.querySelectorAll('.fade');
 
 function updateVisibility() {
   const height = window.innerHeight;
-
-  const topZone = height * 0.25;
-  const bottomZone = height * 0.75;
+  const topZone = height * 0.15;
+  const bottomZone = height * 0.85;
 
   elements.forEach(el => {
     const rect = el.getBoundingClientRect();
-
-    const isVisible =
-      rect.top < bottomZone &&
-      rect.bottom > topZone;
-
+    const isVisible = rect.top < bottomZone && rect.bottom > topZone;
     if (isVisible) {
       el.classList.add('show');
     } else {
@@ -549,33 +551,46 @@ window.addEventListener('scroll', updateVisibility);
 window.addEventListener('load', updateVisibility);
 window.addEventListener('resize', updateVisibility);
 
-/* LANGUAGE SWITCH */
 let currentLang = "ru";
 
 function setLanguage(lang) {
-  const elements = document.querySelectorAll("[data-ru]");
-
-  elements.forEach(el => {
-    el.innerHTML = el.getAttribute("data-" + lang); // <-- ВАЖНО
+  const regularElements = document.querySelectorAll("[data-ru]:not(.hero-title-wrapper span)");
+  regularElements.forEach(el => {
+    if (el.getAttribute("data-" + lang)) {
+      el.innerHTML = el.getAttribute("data-" + lang);
+    }
   });
 
+  const strokeSpan = document.querySelector('.hero h1 .stroke-text');
+  const normalSpan = document.querySelector('.hero h1 .normal-part');
+  
+  if (strokeSpan) {
+    const strokeText = lang === "ru" ? strokeSpan.getAttribute("data-ru-stroke") : strokeSpan.getAttribute("data-en-stroke");
+    if (strokeText) strokeSpan.innerText = strokeText;
+  }
+  if (normalSpan) {
+    const normalText = lang === "ru" ? normalSpan.getAttribute("data-ru-normal") : normalSpan.getAttribute("data-en-normal");
+    if (normalText) normalSpan.innerText = normalText;
+  }
+  
   currentLang = lang;
 }
 
 function toggleLang() {
-  const elements = document.querySelectorAll("[data-ru]");
-
-  // fade out
-  elements.forEach(el => el.classList.add("lang-fade"));
-
+  const allLangElements = document.querySelectorAll("[data-ru], .stroke-text, .normal-part");
+  
+  allLangElements.forEach(el => {
+    if (el.classList) el.classList.add("lang-fade");
+  });
+  
   setTimeout(() => {
     const newLang = currentLang === "ru" ? "en" : "ru";
     setLanguage(newLang);
-
-    // fade in
-    elements.forEach(el => el.classList.remove("lang-fade"));
-
-  }, 250);
+    
+    allLangElements.forEach(el => {
+      if (el.classList) el.classList.remove("lang-fade");
+    });
+  }, 200);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -585,10 +600,9 @@ document.addEventListener("DOMContentLoaded", () => {
 window.addEventListener("load", () => {
   setTimeout(() => {
     document.body.classList.add("loaded");
-  }, 500); // задержка перед появлением (можешь поставить 1000-1500)
+    updateVisibility();
+  }, 300);
 });
-
 </script>
-
 </body>
 </html>
