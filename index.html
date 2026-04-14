@@ -395,6 +395,7 @@ h1, h2, h3 {
   text-align: center;
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 /* ховер */
@@ -433,6 +434,25 @@ h1, h2, h3 {
   height: 30px;
 }
 
+.cta-button {
+  margin-top: 25px;
+  padding: 14px 28px;
+  font-size: 22px;
+  font-family: var(--font-heading);
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  opacity: 0.9;
+}
+  
 </style>
 </head>
 <body>
@@ -449,7 +469,9 @@ h1, h2, h3 {
   </h1>
   <p data-ru="Я сделаю твой контент продаваемым" data-en="I will make your content sellable"></p>
 </section>
-
+<button class="cta-button" onclick="scrollToSection('contact')">
+  Заказать монтаж
+</button>
 <section id="hello" class="fade">
   <div class="card">
 
@@ -464,10 +486,9 @@ h1, h2, h3 {
 
   <!-- 4 направления (горизонтальные блоки) -->
   <div class="hello-services">
-   <div class="hello-service" data-ru="Вирусные рилсы и шортсы" data-en="Viral reels and shorts
-"></div>
-   <div class="hello-service" data-ru="Длинные влоги и разговорные ролики" data-en="Long-form vlogs and talk videos"></div>
-   <div class="hello-service" data-ru="Анимация логотипов и брендов" data-en="Logo and brand animation"></div>
+    <div class="hello-service" onclick="scrollToSection('contact')" data-ru="Вирусные рилсы и шортсы" data-en="Viral reels and shorts"></div>
+    <div class="hello-service" onclick="scrollToSection('contact')" data-ru="Длинные влоги и разговорные ролики" data-en="Long-form vlogs and talk videos"></div>
+    <div class="hello-service" onclick="scrollToSection('contact')" data-ru="Анимация логотипов и брендов" data-en="Logo and brand animation"></div>
   </div>
   </div>
 </section>
