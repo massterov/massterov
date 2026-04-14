@@ -322,6 +322,14 @@ h1, h2, h3 {
   white-space: nowrap;
 }
 
+#hello p {
+  font-size: 30px;
+  text-align: center;
+  line-height: 1.5;
+  max-width: 800px; /* чтобы строки не были слишком длинными */
+  margin: 0 auto 20px; /* центр + отступ вниз */
+}
+
 .footer {
   text-align: center;
   font-size: 15px;
@@ -366,6 +374,65 @@ h1, h2, h3 {
     font-size: 16px;
   }
 }
+
+/* === HELLO SERVICES (горизонтальные блоки) === */
+.hello-services {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* центрируем */
+  gap: 15px;
+  margin: 30px 0;
+}
+
+/* сами блоки */
+.hello-service {
+  width: 85%; /* вот оно — 70-80% */
+  padding: 18px 25px;
+  border-radius: 14px;
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,0.08);
+  font-size: 26px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+/* ховер */
+.hello-service:hover {
+  transform: translateX(8px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+  background: linear-gradient(90deg, var(--card), rgba(88,101,242,0.2));
+}
+
+@media (max-width: 600px) {
+  .hello-service {
+    width: 100%; /* чтобы не вылазило */
+    font-size: 20px;
+    padding: 16px;
+  }
+}
+
+/* === TOOLS В FAQ === */
+
+.faq-tools {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.faq-tool {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 22px;
+}
+
+.faq-tool img {
+  width: 30px;
+  height: 30px;
+}
+
 </style>
 </head>
 <body>
@@ -381,6 +448,28 @@ h1, h2, h3 {
     </span>
   </h1>
   <p data-ru="Я сделаю твой контент продаваемым" data-en="I will make your content sellable"></p>
+</section>
+
+<section id="hello" class="fade">
+  <div class="card">
+
+    <!-- Верхний текст -->
+    <p data-ru="Я Захар, монтажер и моушн-дизайнер, создаю цепляющий и продающий монтаж, а также анимацию, 
+    которую не стыдно показывать вашей аудитории.
+    <br><br>Вот основные направления моей работы:"
+       data-en="I'm Zakhar, an editor and motion designer. I create engaging and compelling montages, 
+       as well as animations that you're not embarrassed to show to your audience.
+       <br><br>Here are the main areas of my work:">
+    </p>
+
+  <!-- 4 направления (горизонтальные блоки) -->
+  <div class="hello-services">
+   <div class="hello-service" data-ru="Вирусные рилсы и шортсы" data-en="Viral reels and shorts
+"></div>
+   <div class="hello-service" data-ru="Длинные влоги и разговорные ролики" data-en="Long-form vlogs and talk videos"></div>
+   <div class="hello-service" data-ru="Анимация логотипов и брендов" data-en="Logo and brand animation"></div>
+  </div>
+  </div>
 </section>
 
 <section id="portfolio" class="fade">
@@ -425,16 +514,6 @@ h1, h2, h3 {
     <h2 data-ru="FAQ" data-en="FAQ">FAQ</h2>
     <div class="faq">
       <div class="faq-item">
-        <div class="faq-question" data-ru="Обо мне" data-en="About me">
-          Кто я?
-        </div>
-        <div class="faq-answer" data-ru="<br>Меня зовут Захар, и я занимаюсь созданием моушн-анимации и видеомонтажом. При сотрудничестве я могу гарантировать четкое соблюдение дедлайнов, 
-    соответствие вашим идеям и ожиданиям, а также работу с правками до тех пор, пока вы не будете полностью довольны результатом." 
-          data-en="<br>My name is Zakhar, and I specialize in motion animation and video editing. When working with me, I guarantee strict adherence to deadlines, 
-accommodating your ideas and expectations, and working with you on revisions until you're completely satisfied with the result."> 
-        </div>
-      </div>
-      <div class="faq-item">
         <div class="faq-question" data-ru="Сроки выполнения" data-en="Delivery time">
           Сроки выполнения?
         </div>
@@ -457,6 +536,33 @@ It's worth keeping in mind that the final cost of a single video depends on the 
 discounts for bulk orders are available.">
         </div>
       </div>
+      <div class="faq-item">
+  <div class="faq-question" 
+       data-ru="Какие программы использую" 
+       data-en="What programs do I use">
+    Какие программы я использую?
+  </div>
+  <div class="faq-answer" 
+       data-ru="
+       <br>
+       <div class='faq-tools'>
+         <div class='faq-tool'><img src='icons/ae.png'> After Effects</div>
+         <div class='faq-tool'><img src='icons/pr.png'> Premiere Pro</div>
+         <div class='faq-tool'><img src='icons/ps.png'> Photoshop</div>
+         <div class='faq-tool'><img src='icons/ai.png'> Illustrator</div>
+       </div>
+       "
+       data-en="
+       <br>
+       <div class='faq-tools'>
+         <div class='faq-tool'><img src='icons/ae.png'> After Effects</div>
+         <div class='faq-tool'><img src='icons/pr.png'> Premiere Pro</div>
+         <div class='faq-tool'><img src='icons/ps.png'> Photoshop</div>
+         <div class='faq-tool'><img src='icons/ai.png'> Illustrator</div>
+       </div>
+       ">
+  </div>
+</div>
     </div>
   </div>
 </section>
