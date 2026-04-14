@@ -446,11 +446,52 @@ h1, h2, h3 {
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .cta-button:hover {
   transform: translateY(-3px);
   opacity: 0.9;
+}
+
+#precontact {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.precontact-text {
+  font-size: 60px;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: var(--font-heading);
+}
+
+.arrow-down {
+  margin-top: 25px;
+  font-size: 60px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0.8;
+}
+
+.arrow-down:hover {
+  transform: translateY(6px);
+  opacity: 1;
+}
+
+@media (max-width: 650px) {
+  .precontact-text {
+    font-size: 36px;
+  }
+
+  .arrow-down {
+    font-size: 40px;
+  }
 }
   
 </style>
@@ -585,6 +626,17 @@ discounts for bulk orders are available.">
   </div>
 </div>
     </div>
+  </div>
+</section>
+
+<section id="precontact" class="hero fade">
+  <p class="precontact-text"
+     data-ru="Связаться со мной и заказать монтаж"
+     data-en="Get in touch and order editing">
+  </p>
+
+  <div class="arrow-down" onclick="scrollToSection('contact')">
+    ↓
   </div>
 </section>
 
