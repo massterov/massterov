@@ -458,6 +458,14 @@ h1, h2, h3 {
   opacity: 0.9;
 }
 
+.cta-button {
+  margin: 0; /* убираем старые margin-top/margin-bottom */
+}
+
+.cta-button:first-child {
+  margin-right: 0;
+}
+
 #precontact {
   padding-top: 80px;
   padding-bottom: 80px;
@@ -511,9 +519,11 @@ h1, h2, h3 {
   </h1>
   <p data-ru="Я сделаю твой контент продаваемым" data-en="I will make your content sellable"></p>
 </section>
-<button class="cta-button" onclick="scrollToSection('contact')"
- data-ru="Заказать монтаж" data-en="Cooperate with me">
-  </button>
+
+  <div style="display: flex; gap: 20px; justify-content: center; margin-top: 0px; margin-bottom: 50px;">
+  <button class="cta-button" style="margin: 0;" onclick="scrollToSection('contact')" data-ru="Заказать монтаж" data-en="Cooperate with me">Заказать монтаж</button>
+  <button class="cta-button" style="margin: 0;" onclick="scrollToSection('portfolio')" data-ru="Портфолио" data-en="Portfolio">Портфолио</button>
+</div>
   
 <section id="hello" class="fade">
 <div class="card">
