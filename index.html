@@ -1,6 +1,8 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+<link rel="logo" type="image/png" sizes="32x32" href="icons/icon.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portfolio | MASSTEROV</title>
@@ -376,14 +378,15 @@ h1, h2, h3 {
 }
 
 /* === HELLO SERVICES (горизонтальные блоки) === */
+/* === HELLO SERVICES (горизонтальные блоки) === */
 .hello-item {
   display: flex;
-  flex-direction: column;  /* чтобы цифра была НАД блоком */
+  flex-direction: column;
   align-items: center;
-  gap: 15px;  /* отступ между цифрой и блоком */
+  gap: 15px;
   cursor: pointer;
-  flex: 1;  /* добавить - чтобы блоки растягивались равномерно */
-  min-width: 200px;  /* добавить - минимальная ширина */
+  flex: 1;
+  min-width: 0;
 }
 
 .hello-item:hover .service-number {
@@ -400,14 +403,15 @@ h1, h2, h3 {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 40px;  /* увеличил отступ между блоками */
+  gap: 40px;
   margin: 30px 0;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 /* сами блоки */
 .hello-service {
-  width: 280px; /* фикс ширина вместо % */
+  width: auto;
+  min-width: 180px;
   padding: 20px;
   border-radius: 14px;
   background: var(--card);
@@ -416,12 +420,6 @@ h1, h2, h3 {
   text-align: center;
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
   transition: all 0.3s ease;
-  cursor: pointer;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
 }
 
 /* ховер */
@@ -436,23 +434,22 @@ h1, h2, h3 {
   height: 42px;
   border-radius: 50%;
   border: 1.5px solid var(--accent);
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   font-size: 18px;
   font-family: var(--font-heading);
-
-  color: var(--accent); /* ВАЖНО */
+  color: var(--accent);
   background: transparent;
-
   transition: all 0.3s ease;
 }
   
 @media (max-width: 600px) {
+  .hello-services {
+    flex-wrap: wrap;
+  }
   .hello-service {
-    width: 100%; /* чтобы не вылазило */
+    width: 100%;
     font-size: 20px;
     padding: 16px;
   }
@@ -578,27 +575,27 @@ h1, h2, h3 {
     <p data-ru="Я Захар, занимаюсь монтажом и моушн-анимацией. Со мной ваши ролики точно будут досматривать.
     <br><br>Основные направления моей работы"
        data-en="I'm Zakhar, and I work in editing and motion animation. With me, your videos will definitely be watched to the end.
-<br><br>My main areas of work>
+<br><br>My main areas of work">
     </p>
 
   <!-- 4 направления (горизонтальные блоки) -->
 <div class="hello-services">
 
-  <div class="hello-item" onclick="scrollToSection('contact')">
+  <div class="hello-item" onclick="scrollToSection('portfolio')">
     <div class="service-number">1</div>
     <div class="hello-service">
       <span data-ru="Вирусные рилсы" data-en="Viral reels"></span>
     </div>
   </div>
 
-  <div class="hello-item" onclick="scrollToSection('contact')">
+  <div class="hello-item" onclick="scrollToSection('portfolio1')">
     <div class="service-number">2</div>
     <div class="hello-service">
-      <span data-ru="Длинные роликиАнимация брендов" data-en="Brand animation"></span>
+      <span data-ru="Анимация брендов" data-en="Brand animation"></span>
     </div>
   </div>
 
-  <div class="hello-item" onclick="scrollToSection('contact')">
+  <div class="hello-item" onclick="scrollToSection('portfolio2')">
     <div class="service-number">3</div>
     <div class="hello-service">
       <span data-ru="Длинные ролики" data-en="Long videos"></span>
@@ -606,7 +603,6 @@ h1, h2, h3 {
   </div>
 
 </div>
-  </div>
   </div>
 </section>
 
@@ -632,6 +628,20 @@ h1, h2, h3 {
     </div>
   </div>
 </section>
+
+<section id="portfolio1" class="fade">
+  <div class="card">
+    <h2 data-ru="Анимация и моушн" data-en="Animation and motion">Vertical</h2>
+    <div class="portfolio-row vertical">
+      <iframe src="https://player.vimeo.com/video/1184202017"
+        loading="lazy"
+        frameborder="0"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
 
 <section id="portfolio2" class="fade">
   <div class="card">
