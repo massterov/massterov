@@ -378,24 +378,30 @@ h1, h2, h3 {
 /* === HELLO SERVICES (горизонтальные блоки) === */
 .hello-services {
   display: flex;
-  flex-direction: column;
-  align-items: center; /* центрируем */
-  gap: 15px;
+  flex-direction: row; /* было column */
+  justify-content: center;
+  gap: 20px;
   margin: 30px 0;
+  flex-wrap: wrap; /* чтобы не ломалось на маленьких экранах */
 }
 
 /* сами блоки */
 .hello-service {
-  width: 85%; /* вот оно — 70-80% */
-  padding: 18px 25px;
+  width: 280px; /* фикс ширина вместо % */
+  padding: 20px;
   border-radius: 14px;
   background: var(--card);
   border: 1px solid rgba(255,255,255,0.08);
-  font-size: 26px;
+  font-size: 22px;
   text-align: center;
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
   transition: all 0.3s ease;
   cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 }
 
 /* ховер */
@@ -405,6 +411,24 @@ h1, h2, h3 {
   background: linear-gradient(90deg, var(--card), rgba(88,101,242,0.2));
 }
 
+.service-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--stroke-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-family: var(--font-heading);
+  transition: all 0.3s ease;
+}
+
+/* ховер как у карточек */
+.hello-service:hover .service-number {
+  transform: scale(1.15);
+}
+  
 @media (max-width: 600px) {
   .hello-service {
     width: 100%; /* чтобы не вылазило */
@@ -538,9 +562,17 @@ h1, h2, h3 {
 
   <!-- 4 направления (горизонтальные блоки) -->
   <div class="hello-services">
-    <div class="hello-service" onclick="scrollToSection('contact')" data-ru="Вирусные рилсы и шортсы" data-en="Viral reels and shorts"></div>
-    <div class="hello-service" onclick="scrollToSection('contact')" data-ru="Длинные влоги и разговорные ролики" data-en="Long-form vlogs and talk videos"></div>
-    <div class="hello-service" onclick="scrollToSection('contact')" data-ru="Анимация логотипов и брендов" data-en="Logo and brand animation"></div>
+    <div class="hello-service" onclick="scrollToSection('contact')" data-ru="Вирусные рилсы и шортсы" data-en="Viral reels and shorts">
+  <div class="service-number">1</div>
+</div>
+
+<div class="hello-service" onclick="scrollToSection('contact')" data-ru="Длинные влоги и разговорные ролики" data-en="Long-form vlogs and talk videos">
+  <div class="service-number">2</div>
+</div>
+
+<div class="hello-service" onclick="scrollToSection('contact')" data-ru="Анимация логотипов и брендов" data-en="Logo and brand animation">
+  <div class="service-number">3</div>
+</div>
   </div>
   </div>
 </section>
