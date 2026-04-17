@@ -381,7 +381,7 @@ h1, h2, h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 30px;
   cursor: pointer;
 }
 
@@ -479,27 +479,29 @@ h1, h2, h3 {
 }
 
 .cta-button {
-  margin-top: 0px;
-  margin-bottom: 50px;
   padding: 14px 28px;
   font-size: 22px;
   font-family: var(--font-heading);
-  background: var(--accent);
-  color: white;
-  border: none;
+
+  background: transparent; /* прозрачная */
+  color: var(--accent); /* цвет текста */
+
+  border: 1.5px solid var(--accent); /* обводка */
   border-radius: 12px;
+
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
 
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
+/* hover — как у цифр */
 .cta-button:hover {
+  background: var(--accent);
+  color: #fff;
   transform: translateY(-3px);
-  opacity: 0.9;
 }
 
 .cta-button {
@@ -564,7 +566,7 @@ h1, h2, h3 {
   <p data-ru="Я сделаю твой контент продаваемым" data-en="I will make your content sellable"></p>
 </section>
 
-  <div style="display: flex; gap: 20px; justify-content: center; margin-top: 0px; margin-bottom: 50px;">
+  <div style="display: flex; gap: 20px; justify-content: center; margin-top: -20px; margin-bottom: 50px;">
   <button class="cta-button" style="margin: 0;" onclick="scrollToSection('contact')" data-ru="Заказать монтаж" data-en="Cooperate with me">Заказать монтаж</button>
   <button class="cta-button" style="margin: 0;" onclick="scrollToSection('portfolio')" data-ru="Портфолио" data-en="Portfolio">Портфолио</button>
 </div>
